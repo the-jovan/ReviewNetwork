@@ -1,0 +1,15 @@
+@import './variables';
+
+@mixin header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, $color-purple-primary 15%, $color-blue-primary 85%);
+}
+
+@mixin five-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1.5rem;
+}

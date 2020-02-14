@@ -1,0 +1,33 @@
+@import './../abstracts/variables';
+@import './../abstracts/mixins';
+
+.review {
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  flex: 1;
+  max-width: 1080px;
+  text-decoration: none;
+
+  &__grid {
+    @include five-cards-grid;
+  }
+
+  &__section {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $color-grey-medium;
+  }
+
+  &__seeall {
+    float: right;
+    color: $color-purple-primary;
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+}

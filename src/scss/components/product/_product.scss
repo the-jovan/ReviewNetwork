@@ -1,0 +1,37 @@
+@import './../../abstracts/mixins';
+@import './../../abstracts/variables';
+
+.product {
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__container {
+    flex: 1;
+    max-width: 1080px;
+    background-color: $color-white-tertiary;
+  }
+
+  &__mainImg {
+    width: 100%;
+    height: 26rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__sides {
+    display: flex;
+  }
+
+  &__side {
+    flex: 1;
+    padding: 2rem;
+
+    & > h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+  }
+}

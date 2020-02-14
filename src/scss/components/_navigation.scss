@@ -1,0 +1,27 @@
+@import './../abstracts/mixins';
+@import './../abstracts/variables';
+
+.navigation {
+  &__wrapper {
+    @include header-wrapper;
+  }
+
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 1366px;
+
+  &__link {
+    color: $color-white-secondary;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: .75rem 1rem;
+    border-bottom: 4px solid transparent;
+
+    &:hover {
+      border-bottom: 4px solid $color-white-secondary;
+    }
+  }
+}
