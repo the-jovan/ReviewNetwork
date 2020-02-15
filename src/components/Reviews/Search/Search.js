@@ -12,6 +12,9 @@ const Search = ({type}) => {
   })
 
   const urlParams = new URLSearchParams(window.location.search)
+
+  console.log(urlParams)
+
   let page = urlParams.get('page')
 
   useEffect(() => {
@@ -19,6 +22,7 @@ const Search = ({type}) => {
   }, [])
 
   function getData() {
+    console.log('aaaaaa')
     if (type === 'restaurants') {
       switch (urlParams.get('meals')) {
         case 'Dinner':
@@ -43,8 +47,6 @@ const Search = ({type}) => {
           getThreeStars(page).then(response => setData({list: [...data.list, ...response.data], limit: response.meta.pagination.total}))
         break
       }
-    } else {
-      // NE RADI TYPE ZA TRENDING?????????????
     }
   }
 

@@ -10,8 +10,9 @@ export const createTrendingCards = data => {
         img={e.entity.images[0]}
         type={e.entity.type}
         name={e.entity.name}
+        slug={e.entity.slug}
         address={e.entity.address}
-        stars={e.entity.stars}
+        stars={e.entity.review_stats.average_score}
         review={e.entity.review_stats.reviews_total}
       />
     ))
@@ -27,6 +28,7 @@ export const createCards = data => {
         img={e.images[0]}
         type={e.type}
         name={e.name}
+        slug={e.slug}
         address={e.address}
         stars={e.stars}
         review={e.review_stats.reviews_total}

@@ -1,0 +1,30 @@
+@import './../../abstracts/variables';
+
+.dropdown {
+
+  &__element {
+    background-color: $color-white-primary;
+    color: $color-grey-medium;
+    padding: .02rem .5rem;
+    margin: 1rem 0;
+
+    & > h2 {
+      line-height: 1;
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: .5rem 0;
+      cursor: pointer;
+    }
+
+    &__list {
+      margin: 0;
+      padding: 0.1rem 1rem;
+      transition: 1s all;
+
+      & > li {
+        font-size: .8rem;
+      }
+    }
+  }
+}

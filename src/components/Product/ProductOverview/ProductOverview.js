@@ -8,7 +8,7 @@ const ProductOverview = ({ info }) => {
       <h2>Overview</h2>
       <p><b>Address:</b> {address}, {city}, {country}</p>
       {phone && <p><b>Phone:</b> {phone}</p>}
-      {website && <p><b>Website:</b> {website}</p>}
+      {website && <p><b>Website:</b> <a href={website} target='_blank'>{website}</a></p>}
       {email && <p><b>Email:</b> {email}</p>}
       {rooms && <p><b>Rooms:</b> {rooms.join(', ')}</p>}
     </div>

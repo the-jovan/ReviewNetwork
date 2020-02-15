@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import './../../scss/components/product/_product.scss'
 import { getSingleRestaurant, getSingleHotel } from './../../services/api/fetchAll'
+import { Link } from '@reach/router'
 
 import Score from './Score/Score'
 import ProductGallery from './ProductGallery/ProductGallery'
 import ProductOverview from './ProductOverview/ProductOverview'
+import ProductDropDown from './ProductDropDown/ProductDropDown'
 
 const Product = ({type, name}) => {
   const [data, setData] = useState()
-  console.log(data)
 
   useEffect(() => {
     switch(type) {
       case 'restaurants':
-        getSingleRestaurant(name).then(response => setData(response.data))
+        getSingleRestaurant(name).then(response => {
+          console.log('name')
+          setData(response.data)
+        })
       break
       case 'hotels':
-        getSingleHotel(name).then(response => setData(response.data))
+        getSingleHotel(name).then(response => {
+          setData(response.data)
+        })
       break
     }
   }, [])
@@ -48,18 +54,36 @@ const Product = ({type, name}) => {
     }
   }
 
+  const createDropDown = () => {
+    if (data) {
+      if (type === 'restaurants') {
+        const info = [{type: 'Cuisine', facilities: data.cuisine}, {type: 'Meals', facilities: data.meals},
+        {type: 'Features', facilities: data.features}, {type: 'Good For', facilities: data.good_for}]
+        return info.map(e => <ProductDropDown info={e} />)
+      } else if (type='hotels') {
+        return data.facilities.map(e => <ProductDropDown info={e} />)
+      }
+    }
+  }
+
   return (
     <div className='product__wrapper'>
       <div className='product__container'>
         {createMainImage()}
         <div className='product__sides'>
           <div className='product__side'>
-            <h2>{name.split('-').join(' ')} <span>stars</span></h2>
+            <Link className='product__return' to='/'>&lt;</Link>
+            <h2>{name.split('-').join(' ')} <span>9</span></h2>
             {createScore()}
             {createGallery()}
+            {data && data.summary && <p className='product__summary'>{data.summary}</p>}
           </div>
           <div className='product__side'>
+            <Link className='product__addReview' to=''>Write Review</Link>
             {createOverview()}
+            <div>
+              {createDropDown()}
+            </div>
           </div>
         </div>
       </div>

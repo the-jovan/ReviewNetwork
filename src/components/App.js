@@ -4,6 +4,7 @@ import { Router } from '@reach/router'
 import { getAll } from './../services/api/fetchAll'
 
 import Header from './Header/Header'
+import Footer from './Footer/Footer'
 import Home from './Home/Home'
 import Login from './user/Login'
 import Register from './user/Register'
@@ -13,6 +14,7 @@ import Restaurants from './Reviews/Restaurants/Restaurants'
 import Hotels from './Reviews/Hotels/Hotels'
 import Search from './Reviews/Search/Search'
 import Product from './Product/Product'
+import SearchResults from './Reviews/SearchResults/SearchResults'
 
 export const ReviewsNetworkContext = createContext()
 
@@ -25,6 +27,7 @@ const App = () => {
 	return (
 		<ReviewsNetworkContext.Provider value={[data, setData]}>
 			<Header />
+			<Footer />
 			<Router>
 				<Home path='/' />
 				<Login path='/login' />
@@ -34,6 +37,7 @@ const App = () => {
 					<Restaurants path='restaurants' />
 					<Hotels path='hotels' />
 					<Search path=':type/search' />
+					<SearchResults path='/search-results/:term' />
 				</Reviews>
 				<Product path='/product/:type/:name'/>
 			</Router>

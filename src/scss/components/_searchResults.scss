@@ -1,0 +1,14 @@
+@import './../abstracts/mixins';
+@import './../abstracts/variables';
+
+.searchResults {
+  @include two-cards-grid;
+  flex: 1;
+  max-width: 1080px;
+  margin: 1.5rem 0;
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}

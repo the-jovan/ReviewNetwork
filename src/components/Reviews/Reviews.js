@@ -1,6 +1,6 @@
 import React from 'react'
 import './../../scss/components/_navigation.scss'
-import { Link } from '@reach/router'
+import { Link, navigate } from '@reach/router'
 
 const Reviews = ({ children }) => {
   return (
@@ -10,6 +10,15 @@ const Reviews = ({ children }) => {
           <Link className='navigation__link' to='/reviews'>All</Link>
           <Link className='navigation__link' to='restaurants'>Restaurants</Link>
           <Link className='navigation__link' to='hotels'>Hotels</Link>
+          <form className='navigation__link'
+            onSubmit={event => {
+            event.preventDefault()
+            const id = event.target.elements[0].value
+            event.target.reset()
+            navigate(`/reviews/search-results/${id}`)
+            }}>
+            <input type='text' placeholer='search'/>
+          </form>
         </nav>
       </div>
       <div>
