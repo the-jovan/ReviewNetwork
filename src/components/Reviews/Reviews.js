@@ -17,7 +17,7 @@ const Reviews = ({ children }) => {
             event.target.reset()
             navigate(`/reviews/search-results/${id}`)
             }}>
-            <input type='text' placeholer='search'/>
+            <input type='text' placeholder='Search'/>
           </form>
         </nav>
       </div>

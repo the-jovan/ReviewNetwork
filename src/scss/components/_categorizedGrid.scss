@@ -12,6 +12,11 @@
   max-width: 1080px;
   text-decoration: none;
 
+  @include phone-only {
+    width: 100%;
+    margin: 0 1rem;
+  }
+
   &__grid {
     @include five-cards-grid;
   }
@@ -21,6 +26,10 @@
     font-weight: 600;
     text-transform: uppercase;
     color: $color-grey-medium;
+
+    @include phone-only {
+      margin: 1rem;
+    }
   }
 
   &__seeall {

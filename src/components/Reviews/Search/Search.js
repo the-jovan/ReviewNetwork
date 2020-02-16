@@ -14,15 +14,13 @@ const Search = ({type}) => {
 
   const urlParams = new URLSearchParams(window.location.search)
 
-  console.log(type)
-
   let page = urlParams.get('page')
 
   useEffect(() => {
     getData()
     // window.addEventListener('scroll', _.throttle(handleScroll, 100))
 
-    // return function cleanup() {
+    // return () => {
     //   window.removeEventListener('scroll', _.throttle(handleScroll, 100))
     // }
   }, [])
@@ -56,8 +54,6 @@ const Search = ({type}) => {
       getTrending(pages).then(response => setData({page: pages, list: [...data.list, ...response.data], limit: response.meta.pagination.total_pages}))
     }
   }
-
-  console.log(data)
 
   // const handleScroll = () => {
   //   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {

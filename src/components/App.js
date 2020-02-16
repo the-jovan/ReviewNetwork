@@ -21,14 +21,19 @@ export const ReviewsNetworkContext = createContext()
 const App = () => {
 	const [data, setData] = useState({})
 	useEffect(() => {
-		getAll().then(response => setData({ trending: response[0].data, restaurants: response[1].data, hotels: response[2].data }))
+		const fetchInitialData = () => {
+			getAll()
+			.then(response => setData({ trending: response[0].data, restaurants: response[1].data, hotels: response[2].data }))
+			.catch(err => console.error(err))
+		}
+		fetchInitialData()
 	}, [])
 
 	return (
 		<ReviewsNetworkContext.Provider value={[data, setData]}>
 			<Header />
 			<Footer />
-			<Router className='rut'>
+			<Router>
 				<Home path='/' />
 				<Login path='/login' />
 				<Register path='/register' />

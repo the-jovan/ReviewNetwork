@@ -30,7 +30,7 @@ export const createCards = data => {
         name={e.name}
         slug={e.slug}
         address={e.address}
-        stars={e.stars}
+        stars={e.review_stats.average_score}
         review={e.review_stats.reviews_total}
       />
     ))

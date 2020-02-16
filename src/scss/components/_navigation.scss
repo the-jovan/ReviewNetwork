@@ -11,6 +11,10 @@
   justify-content: flex-start;
   max-width: 1366px;
 
+  @include phone-only {
+    justify-content: center;
+  }
+
   &__link {
     color: $color-white-secondary;
     text-decoration: none;
@@ -27,5 +31,16 @@
 
   &__child {
     margin-bottom: 2rem;
+  }
+
+  & > form > input {
+    background-color: transparent;
+    color: $color-white-primary;
+    font-size: 1rem;
+    border: none;
+
+    &::placeholder {
+      color: $color-grey-light;
+    }
   }
 }

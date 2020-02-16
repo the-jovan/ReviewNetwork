@@ -35,7 +35,7 @@ const Product = ({type, name}) => {
 
   const createScore = () => {
     if (data) {
-      const opts = {stars: data.stars, review: data.review_stats}
+      const opts = {stars: data.review_stats.average_score, review: data.review_stats}
       return <Score opts={opts}/>
     }
   }

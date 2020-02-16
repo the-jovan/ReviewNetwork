@@ -2,9 +2,18 @@ import React from 'react'
 import './../../../scss/components/product/_score.scss'
 
 const Score = ({opts}) => {
+
+  const createRating = () => {
+    if (opts.stars !== null && opts.stars !== undefined) {
+      return (<img src={`/scores/${(Math.round(opts.stars * 10) / 10).toFixed(1)}.svg`} />)
+    } else {
+      return (<img src={`/scores/0.0.svg`} />)
+    }
+  }
+
   return (
     <div className='score'>
-      <p className='score__text'><span>boxes stuff</span> - {opts.review.reviews_total} Reviews</p>
+      <p className='score__text'><span>{createRating()}</span> - {opts.review.reviews_total} Reviews</p>
       <div>
         <div className='score__table'>
           <span>Excellent</span>

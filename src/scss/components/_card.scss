@@ -1,8 +1,13 @@
 @import './../abstracts/variables';
+@import './../abstracts/mixins';
 
 .card {
   background-color: $color-white-primary;
   text-decoration: none;
+  
+  @include phone-only {
+    margin: 0 1rem;
+  }
 
   &__img {
     width: 100%;
