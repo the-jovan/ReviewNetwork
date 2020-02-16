@@ -28,15 +28,16 @@ const App = () => {
 		<ReviewsNetworkContext.Provider value={[data, setData]}>
 			<Header />
 			<Footer />
-			<Router>
+			<Router className='rut'>
 				<Home path='/' />
 				<Login path='/login' />
 				<Register path='/register' />
 				<Reviews path='/reviews'>
 					<Trending path='/' />
+					<Trending path='trending' />
 					<Restaurants path='restaurants' />
 					<Hotels path='hotels' />
-					<Search path=':type/search' />
+					<Search path=':type/search'/>
 					<SearchResults path='/search-results/:term' />
 				</Reviews>
 				<Product path='/product/:type/:name'/>

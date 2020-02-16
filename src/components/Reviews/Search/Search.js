@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './../../../scss/components/_search.scss'
-import { createCards } from './../../Card/createCards'
+import _ from 'lodash'
+import { createCards, createTrendingCards } from './../../Card/createCards'
 import { getDinner, getLunch, getBrunch } from './../../../services/api/fetchRestaurants'
 import { getFiveStars, getFourStars, getThreeStars } from './../../../services/api/fetchHotels'
 import { getTrending } from './../../../services/api/fetchAll'
@@ -13,47 +14,61 @@ const Search = ({type}) => {
 
   const urlParams = new URLSearchParams(window.location.search)
 
-  console.log(urlParams)
+  console.log(type)
 
   let page = urlParams.get('page')
 
   useEffect(() => {
     getData()
+    // window.addEventListener('scroll', _.throttle(handleScroll, 100))
+
+    // return function cleanup() {
+    //   window.removeEventListener('scroll', _.throttle(handleScroll, 100))
+    // }
   }, [])
 
-  function getData() {
-    console.log('aaaaaa')
+  function getData(pages = page) {
     if (type === 'restaurants') {
       switch (urlParams.get('meals')) {
         case 'Dinner':
-          getDinner(page).then(response => setData({list: [...data.list, ...response.data], limit: response.meta.pagination.total}))
+          getDinner(pages).then(response => setData({page: pages, list: [...data.list, ...response.data], limit: response.meta.pagination.total_pages}))
         break
         case 'Lunch':
-          getLunch(page).then(response => setData({list: [...data.list, ...response.data], limit: response.meta.pagination.total}))
+          getLunch(pages).then(response => setData({page: pages, list: [...data.list, ...response.data], limit: response.meta.pagination.total_pages}))
         break
         case 'Brunch':
-          getBrunch(page).then(response => setData({list: [...data.list, ...response.data], limit: response.meta.pagination.total}))
+          getBrunch(pages).then(response => setData({page: pages, list: [...data.list, ...response.data], limit: response.meta.pagination.total_pages}))
         break
       }
     } else if (type === 'hotels') {
       switch (urlParams.get('stars')) {
         case '5':
-          getFiveStars(page).then(response => setData({list: [...data.list, ...response.data], limit: response.meta.pagination.total}))
+          getFiveStars(pages).then(response => setData({page: pages, list: [...data.list, ...response.data], limit: response.meta.pagination.total_pages}))
         break
         case '4':
-          getFourStars(page).then(response => setData({list: [...data.list, ...response.data], limit: response.meta.pagination.total}))
+          getFourStars(pages).then(response => setData({page: pages, list: [...data.list, ...response.data], limit: response.meta.pagination.total_pages}))
         break
         case '3':
-          getThreeStars(page).then(response => setData({list: [...data.list, ...response.data], limit: response.meta.pagination.total}))
+          getThreeStars(pages).then(response => setData({page: pages, list: [...data.list, ...response.data], limit: response.meta.pagination.total_pages}))
         break
       }
+    } else if (type === 'trending') {
+      getTrending(pages).then(response => setData({page: pages, list: [...data.list, ...response.data], limit: response.meta.pagination.total_pages}))
     }
   }
+
+  console.log(data)
+
+  // const handleScroll = () => {
+  //   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+  //     console.log('bottom')
+  //   }
+  // }
 
   return (
     <div className='search__wrapper'>
       <div className='search__grid'>
-        {createCards(data.list)}
+        {type === 'trending' ? createTrendingCards(data.list) : createCards(data.list)}
       </div>
     </div>
   )

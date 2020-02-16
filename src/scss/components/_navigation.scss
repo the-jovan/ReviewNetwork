@@ -19,9 +19,13 @@
     text-transform: uppercase;
     padding: .75rem 1rem;
     border-bottom: 4px solid transparent;
-
+    
     &:hover {
       border-bottom: 4px solid $color-white-secondary;
     }
+  }
+
+  &__child {
+    margin-bottom: 2rem;
   }
 }

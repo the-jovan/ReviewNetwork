@@ -7,7 +7,7 @@ const Reviews = ({ children }) => {
     <div>
       <div className='navigation__wrapper'>
         <nav className='navigation'>
-          <Link className='navigation__link' to='/reviews'>All</Link>
+          <Link className='navigation__link' to='trending'>All</Link>
           <Link className='navigation__link' to='restaurants'>Restaurants</Link>
           <Link className='navigation__link' to='hotels'>Hotels</Link>
           <form className='navigation__link'
@@ -21,7 +21,7 @@ const Reviews = ({ children }) => {
           </form>
         </nav>
       </div>
-      <div>
+      <div className='navigation__child'>
         {children}
       </div>
     </div>

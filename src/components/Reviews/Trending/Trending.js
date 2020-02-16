@@ -11,7 +11,7 @@ const Trending = () => {
   return (
     <div className='review__wrapper'>
       <div className='review'>
-        <h2 className='review__section'>Trending <Link className='review__seeall' to='trending/search&page=1'>See all</Link></h2>
+        <h2 className='review__section'>Trending <Link className='review__seeall' to='search?page=1'>See all</Link></h2>
         <div className='review__grid'>
           {createTrendingCards(trending)}
         </div>

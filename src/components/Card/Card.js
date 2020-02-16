@@ -4,7 +4,6 @@ import { Link } from '@reach/router'
 
 const Card = props => {
   const {img, type, name, address, stars, review, slug} = props
-  // let urlName = name.split(' ').join('-')
 
   const getLoc = () => {
     if (type === 'Restaurant') return 'restaurants'

@@ -20,3 +20,17 @@
   grid-auto-rows: auto;
   grid-gap: 1.5rem;
 }
+
+
+@mixin for-phone-only {
+  @media (max-width: 576px) { @content; }
+}
+@mixin for-landscape-phones {
+  @media (min-width: 768px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 992px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
